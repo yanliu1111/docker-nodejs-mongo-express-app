@@ -2,13 +2,12 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
-import { MongoClient } from "mongodb";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 let app = express();
 
 const db = await mongoose.connect(
-  "mongodb://admin:password@localhost:27016/my-db?authSource=admin",
+  "mongodb://admin:password@127.0.0.1:27016/my-db?authSource=admin",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -47,9 +46,9 @@ app.post("/update-profile", function (req, res) {
   console.log("connected to the mongodb line32");
 
   userObj["userid"] = 1;
-  User.updateOne(query, userObj, { upsert: true }).then((result) => {
+  User.updateOne(query, userObj, { upsert: true }).then(() => {
     console.log("successfully updated the profile");
-    res.send("successfully updated the profile");
+    res.send(userObj);
   });
 });
 
@@ -57,7 +56,7 @@ app.get("/get-profile", function (req, res) {
   let response = res;
   console.log("successfully connected to line58");
   User.findOne(query).then((result) => {
-    console.log("successfully retrieved the profile");
+    console.log("successfully retrieved the profile line60");
     response.send(result);
   });
 });

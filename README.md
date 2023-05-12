@@ -18,7 +18,7 @@ Step 1: Create docker network
 
 Step 2: start mongodb
 
-    docker run -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=username -e MONGO_INITDB_ROOT_PASSWORD=userpassword --name mongodb --net mongo-network mongo
+    docker run -d -p 27016:27017 -e MONGO_INITDB_ROOT_USERNAME=username -e MONGO_INITDB_ROOT_PASSWORD=userpassword --name mongodb --net mongo-network mongo
 
 Step 3: start mongo-express
 
@@ -66,8 +66,17 @@ Step 5: access the nodejs application from browser
 
     http://localhost:3000
 
-#### To build a docker image from the application
+#### To build a docker image by Jenkins
 
     docker build -t my-app:1.0 .
 
 The dot "." at the end of the command denotes location of the Dockerfile.
+
+#### To push the image to Docker Repository
+
+1. either people can take it, such as tester, maybe want to download the image
+2. or development server can actually pull it from their.
+
+> Start "my-app" container to verify:
+> app starts successfully
+> app environment is configured correctly

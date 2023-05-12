@@ -112,7 +112,7 @@
         body: JSON.stringify(payload),
       });
       const jsonResponse = await response.json();
-
+      console.log("jsonResponse", jsonResponse);
       document.getElementById("name").textContent = jsonResponse.name;
       document.getElementById("email").textContent = jsonResponse.email;
       document.getElementById("interests").textContent = jsonResponse.interests;
