@@ -7,7 +7,7 @@ import bodyParser from "body-parser";
 let app = express();
 
 const db = await mongoose.connect(
-  "mongodb://admin:password@127.0.0.1:27016/my-db?authSource=admin",
+  "mongodb://admin:password@mymongo:27017/my-db?authSource=admin",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
