@@ -10,4 +10,4 @@ COPY . /home/app
 
 RUN npm install -g nodemon
       
-CMD ["nodemon","server.js"]
+CMD ["node","server.js"]
