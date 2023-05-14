@@ -1,6 +1,18 @@
 ## nodejs-mongo-app developing with Docker
 
-This demo app shows a simple user profile app set up using
+💛 For this project, eventually you only need to operate:
+
+```bash
+docker-compose -f mongo.yaml up
+
+or
+
+docker-compose -f mongo.yaml up -d --build
+
+docker-compose -f mongo.yaml down
+```
+
+## 🚀Let's start! This demo app shows a simple user profile app set up using
 
 - index.html with pure js and css styles
 - nodejs backend with express module
@@ -49,7 +61,7 @@ Step 7: Access you nodejs application UI from browser
 
 Step 1: start mongodb and mongo-express
 
-    docker-compose -f docker-compose.yaml up
+    docker-compose -f mongo.yaml up
 
 _You can access the mongo-express under localhost:8080 from your browser_
 
