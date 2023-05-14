@@ -1,6 +1,5 @@
 FROM node:19
 
-
 ENV MONGO_DB_USERNAME=admin \
     MONGO_DB_PWD=password
 
