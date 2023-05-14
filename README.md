@@ -80,3 +80,67 @@ The dot "." at the end of the command denotes location of the Dockerfile.
 > Start "my-app" container to verify:
 > app starts successfully
 > app environment is configured correctly
+
+## 3 volume types
+
+1 docker run
+
+```bash
+ -v /home/mount/data:/var/lib/mysql/data
+```
+
+Host Volumes
+
+- you decide where on the host file system the reference is made, so which folder on the host file system you want to mount into the container
+
+2 docker run
+when you create a volume, just by referencing the **container** directory, so dont specify which directory on the host should be mounted. But that is taking care of the docker itself.
+
+```bash
+-v /var/lib/mysql/data
+```
+
+`Anonymonus Volumes`
+
+- for each container a folder is generated that gets mounted, you don't have a reference to this automatically generted folder on the host file system
+
+3 docker run
+
+improve of the anonymous volume and it specifies the name of that folder on the host file system, and the name is up to you. It just to reference the directory and this type we called `Named Volumes`
+
+```bash
+ -v name:/var/lib/mysql/data
+```
+
+- compare to anonymous volume, you can reference the volume by name so you dont have to know exactly the path.
+
+Summary: from these three, the mostly used one and the one you should be **using in the production**, is the `Named Volumes`. Because there are additional benefits to letting docker actually manage those volumes directories on the host.
+
+## 4 Same as docker run commands, volume in docker-compose
+
+- Named Volume
+
+```bash
+version: "3"
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - db_data:/var/lib/mysql/data
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: username
+      ME_CONFIG_MONGODB_ADMINPASSWORD: userpassword
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    depends_on:
+      - mongodb
+volumes:
+    db_data
+```
+
+you define at least the volumes that you want to mount into the containers. The benefit of this you can actually mount a reference of the same folder on the host to more than one containers. That would be beneficial if those containers need to share data.
