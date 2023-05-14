@@ -3,10 +3,10 @@ services:
   node-app:
     build: .
     volumes:
-      - .:/home/app
+      - ./app:/home/app
     ports:
       - 3000:3000
-    command: nodemon server.js
+    command: node server.js
     depends_on:
       - mongodb
 
