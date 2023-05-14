@@ -1,5 +1,8 @@
 ## nodejs-mongo-app developing with Docker
 
+Docker learning project from [**TechWorld with Nana**](https://www.youtube.com/watch?v=3c-iBn73dDE&t=7126s&ab_channel=TechWorldwithNana)
+with many modifications and improvements inside, hope it helful for you.💖
+
 💛 For this project, eventually you only need to operate:
 
 ```bash
