@@ -1,4 +1,4 @@
-FROM node:19
+FROM node:18
 
 ENV MONGO_DB_USERNAME=admin \
     MONGO_DB_PWD=password
